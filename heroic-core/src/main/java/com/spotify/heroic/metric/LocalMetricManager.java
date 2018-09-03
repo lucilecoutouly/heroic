@@ -330,7 +330,7 @@ public class LocalMetricManager implements MetricManager {
 
             final OptionalLimit groupLimit =
                 options.getGroupLimit().orElse(LocalMetricManager.this.groupLimit);
-
+             log.debug("---->> coucou 2");
             // Transform that takes the result from ES metadata lookup to fetch from backend
             final LazyTransform<FindSeries, FullQuery> transform =
                 new Transform(request, failOnLimits, seriesLimit, groupLimit, quotaWatcher,
@@ -342,10 +342,12 @@ public class LocalMetricManager implements MetricManager {
                 .onDone(reporter.reportFindSeries())
                 .lazyTransform(transform)
                 .directTransform(fullQuery -> {
+                     log.debug("---->> coucou 3");
                     queryLogger.logOutgoingResponseAtNode(queryContext, fullQuery);
                     return fullQuery;
                 })
                 .onDone(reporter.reportQueryMetrics());
+                
         }
 
         @Override

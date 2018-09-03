@@ -167,8 +167,8 @@ public class QueryResource {
                 return new QueryBatchResponse(results.build());
             });
 
-        response.setTimeout(300, TimeUnit.SECONDS);
-
+       // response.setTimeout(300, TimeUnit.SECONDS);
+        response.setTimeout(30000, TimeUnit.SECONDS);
         httpAsync.bind(response, future);
     }
 
@@ -176,8 +176,8 @@ public class QueryResource {
         final AsyncResponse response, final AsyncFuture<QueryResult> callback,
         final QueryContext queryContext
     ) {
-        response.setTimeout(300, TimeUnit.SECONDS);
-
+       // response.setTimeout(300, TimeUnit.SECONDS);
+        response.setTimeout(30000, TimeUnit.SECONDS);
         httpAsync.bind(response, callback, r -> {
             final QueryMetricsResponse qmr =
                 new QueryMetricsResponse(queryContext.getQueryId(), r.getRange(), r.getGroups(),

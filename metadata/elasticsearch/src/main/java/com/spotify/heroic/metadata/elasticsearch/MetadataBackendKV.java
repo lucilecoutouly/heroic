@@ -120,9 +120,10 @@ public class MetadataBackendKV extends AbstractElasticsearchMetadataBackend
 
     static final String TYPE_METADATA = "metadata";
 
-    static final TimeValue SCROLL_TIME = TimeValue.timeValueMillis(5000);
-    static final int SCROLL_SIZE = 1000;
-
+    //static final TimeValue SCROLL_TIME = TimeValue.timeValueMillis(5000);
+    static final TimeValue SCROLL_TIME = TimeValue.timeValueMillis(50000);
+    //static final int SCROLL_SIZE = 1000;
+    static final int SCROLL_SIZE = 10000;
     private final Groups groups;
     private final MetadataBackendReporter reporter;
     private final AsyncFramework async;

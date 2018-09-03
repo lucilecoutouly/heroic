@@ -115,8 +115,9 @@ public class CassandraProfile extends HeroicProfileBase {
     }
 
     public static final int DEFAULT_NUM_RETRIES = 10;
-    public static final int DEFAULT_ROTATE_HOST = 2;
-
+    //public static final int DEFAULT_ROTATE_HOST = 2;
+    public static final int DEFAULT_ROTATE_HOST = 3;
+    
     private RetryPolicy convertRetryPolicy(final String policyName, final ExtraParameters params) {
         if ("aggressive".equals(policyName)) {
             final int numRetries = params.getInteger("numRetries").orElse(DEFAULT_NUM_RETRIES);

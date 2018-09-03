@@ -37,6 +37,7 @@ public class JettyHttpConfiguration {
 
     public HttpConfiguration build() {
         final HttpConfiguration c = new HttpConfiguration();
+        c.setBlockingTimeout(3000000);
         c.setSendServerVersion(sendServerVersion);
         return c;
     }

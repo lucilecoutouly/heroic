@@ -70,8 +70,8 @@ public final class DatastaxMetricModule implements MetricModule, DynamicModuleId
     public static final int DEFAULT_PORT = 9042;
     public static final boolean DEFAULT_CONFIGURE = false;
     public static final int DEFAULT_FETCH_SIZE = 5000;
-    public static final Duration DEFAULT_READ_TIMEOUT = new Duration(30, TimeUnit.SECONDS);
-
+    //public static final Duration DEFAULT_READ_TIMEOUT = new Duration(30, TimeUnit.SECONDS);
+    public static final Duration DEFAULT_READ_TIMEOUT = new Duration(3600, TimeUnit.SECONDS);
     /* id of backend (defualt will be generated) */
     private final Optional<String> id;
     /* groups for this backend */
