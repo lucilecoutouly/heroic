@@ -23,6 +23,7 @@ package com.spotify.heroic.metadata.elasticsearch;
 
 import static org.elasticsearch.index.query.QueryBuilders.matchAllQuery;
 import static org.elasticsearch.index.query.QueryBuilders.prefixQuery;
+import static org.elasticsearch.index.query.QueryBuilders.regexpQuery;
 import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 
 import com.google.common.collect.ImmutableMap;
@@ -48,6 +49,7 @@ import com.spotify.heroic.filter.MatchTagFilter;
 import com.spotify.heroic.filter.NotFilter;
 import com.spotify.heroic.filter.OrFilter;
 import com.spotify.heroic.filter.StartsWithFilter;
+import com.spotify.heroic.filter.RegexFilter;
 import com.spotify.heroic.filter.TrueFilter;
 import com.spotify.heroic.lifecycle.LifeCycleRegistry;
 import com.spotify.heroic.lifecycle.LifeCycles;
@@ -541,6 +543,12 @@ public class MetadataBackendKV extends AbstractElasticsearchMetadataBackend
             public QueryBuilder visitStartsWith(final StartsWithFilter startsWith) {
                 return prefixQuery(TAGS,
                     startsWith.getTag() + TAG_DELIMITER + startsWith.getValue());
+            }
+            
+             @Override
+            public QueryBuilder visitRegex(final RegexFilter regex) {
+                return regexpQuery(TAGS,
+                   regex.getTag() + TAG_DELIMITER + regex.getValue());
             }
 
             @Override
